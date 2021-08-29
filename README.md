@@ -1,0 +1,2 @@
+# Bedwars-
+Amazing bedwars plugin
