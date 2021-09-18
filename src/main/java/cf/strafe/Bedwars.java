@@ -2,7 +2,7 @@ package cf.strafe;
 
 import cf.strafe.config.Config;
 import cf.strafe.data.DataListener;
-import cf.strafe.map.Map;
+import cf.strafe.game.GameManager;
 import cf.strafe.map.MapManager;
 import lombok.Getter;
 
@@ -20,7 +20,9 @@ public enum Bedwars {
     public void onEnable() {
         Config.loadConfigurations();
         handleBukkit();
+
         MapManager.INSTANCE.loadMaps();
+        GameManager.INSTANCE.init();
     }
 
     public void onDisable() {

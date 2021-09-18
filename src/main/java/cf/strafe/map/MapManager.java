@@ -31,6 +31,9 @@ public enum MapManager {
                 List<TeamObj> teamObjList = new ArrayList<>();
                 List<Generator> generators = new ArrayList<>();
                 String name = yml.getString(key + ".name");
+                boolean team = yml.getBoolean(key + ".team");
+                int maxPlayers = yml.getInt(key + ".maxPlayers");
+                int minPlayers = yml.getInt(key + ".minPlayers");
                 Location location = LocationUtil.parseToLocation(yml.getString(key + ".lobbyLocation"));
                 for(int i = 0; i < yml.getInt(key + ".teams.count"); i++) {
                     String teamName = yml.getString(key + ".teams." + i + ".name");
@@ -44,7 +47,7 @@ public enum MapManager {
                     generators.add(new Generator(generatorType, generatorLocation));
                 }
 
-                maps.add(new Map(name, location, teamObjList, generators));
+                maps.add(new Map(name, team, maxPlayers,minPlayers, location, teamObjList, generators));
 
             }
 
@@ -65,8 +68,10 @@ public enum MapManager {
         for(Map map : maps) {
             String key = map.getName();
             yml.set(key + ".name", key);
+            yml.set(key + ".team", map.isTeam());
             yml.set(key + ".lobbyLocation", LocationUtil.parseToString(map.getLobbyLocation()));
-
+            yml.set(key + ".maxPlayers", map.getMaxPlayers());
+            yml.set(key + ".minPlayers", map.getMinPlayers());
             int counter = 0;
 
             for(TeamObj obj : map.getTeamObjList()) {
