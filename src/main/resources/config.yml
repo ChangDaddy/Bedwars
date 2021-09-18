@@ -1,0 +1,4 @@
+# I'll deal with formatting later
+themes:
+  killMessage: "%killer% has killed %player%"
+  winMessage: "%team% has won"

@@ -1,0 +1,5 @@
+name: Bedwars
+main: cf.strafe.BedwarsPlugin
+version: 1.0
+description: Amazing bedwars plugin
+author: ChangDaddy
